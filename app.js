@@ -3,24 +3,21 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
+const path = require("path");
+const basePath = path.join(__dirname, "/public");
+console.log(basePath);
+const app = express();
+
+app.use(express.static(basePath));
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-const app = express();
-
-app.use(express.static("public"));
-
-app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
+app.post("/", urlencodedParser, function (req, res) {
+  res.sendFile(__dirname + "/public/imgcapture.html");
 });
 
-app.get("/imgcapture", function (req, res) {});
-
-app.post("/", urlencodedParser, function (req, res) {
-  var fullName = req.body.fName;
-
-  res.sendFile(__dirname + "/imgcapture.html");
-  //   res.sendFile(__dirname + "/imgcapture.html");
+app.post("/imgcompare", function (req, res) {
+  res.sendFile(__dirname + "/public/imgcompare.html");
 });
 
 app.listen(process.env.PORT || 3000, function () {
