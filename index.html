@@ -97,17 +97,22 @@
             <p class="h7 mb-3 fw-normal">with face recognition</p>
 
             <div class="form-floating ">
-                <input type="name" name="fName" class="form-control name-field" placeholder="Ash">
+                <input type="name" name="fName" id="username" class="form-control name-field" placeholder="Ash">
                 <label for="floatingInput">Enter Your Name</label>
             </div>
 
 
-            <button class="w-100 btn btn-lg btn-primary name-field" type="submit">Enter</button>
+            <button class="w-100 btn btn-lg btn-primary name-field" onClick="btnclicked();" type="submit">Enter</button>
             <p class="mt-5 mb-3 text-muted"> Microsoft Engage 2022</p>
         </form>
     </main>
 
+    <script>
 
+        function btnclicked() {
+            localStorage.setItem("username", document.getElementById("username").value)
+        };
+    </script>
 
 </body>
 
